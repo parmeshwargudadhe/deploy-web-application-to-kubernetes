@@ -1,0 +1,21 @@
+# kubectl apply -f deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app-container
+        image: parmeshwargudadhe/python-app:latest
+        ports:
+        - containerPort: 8000
